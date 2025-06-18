@@ -30,15 +30,13 @@
               # JavaScript
               nodejs
               corepack
-              # Scala
-              jdk21_headless
-              sbt
-              # rust
+              # Rust
               openssl
               pkg-config
               bacon
               (rust-bin.stable.latest.default.override { extensions = [ "rust-src" ]; })
             ];
+
             RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
           };
       }

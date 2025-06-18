@@ -51,7 +51,7 @@ fn main() -> Result<(), ServerError> {
                         .skip(1)
                     {
                         match result {
-                            Ok(record) => match socket.write_all(record.as_bytes()) {
+                            Ok(record) => match socket.write_all(format!("{}\n", record).as_bytes()) {
                                 Ok(_) => {
                                     println!("Sent message to client: {}", record);
                                 }
@@ -69,7 +69,7 @@ fn main() -> Result<(), ServerError> {
                         thread::sleep(time::Duration::from_millis(48));
                     }
                     // send Over
-                    match socket.write_all("Over".as_bytes()) {
+                    match socket.write_all("Over\n".as_bytes()) {
                         Ok(_) => {
                             println!("Sent message to client: Over");
                         }
