@@ -1,36 +1,11 @@
 # Client
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+/client/node_modules
+/client/dist
 
 # Middle-Server
-/middle-server/.bloop
-/middle-server/.bsp
-/middle-server/.metals
-/middle-server/project/.bloop
-/middle-server/project/project
-/middle-server/project/target
-/middle-server/target
-/.metals
+/middle-server/.gradle
+/middle-server/bin
+/middle-server/build
 
 # Server
 /server/target
