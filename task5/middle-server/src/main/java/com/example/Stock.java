@@ -8,10 +8,6 @@ public class Stock {
     public double close;
     public String timestamp;
 
-    // flink用のデフォルトコンストラクタ
-    public Stock() {
-    }
-
     // コンストラクタ
     public Stock(String name, double open, double high, double low, double close, String timestamp) {
         this.name = name;
@@ -24,7 +20,10 @@ public class Stock {
 
     // パース用のメソッド
     public static Stock fromString(String line) throws IllegalArgumentException {
+        // パース
         String[] parts = line.split(",");
+
+        // バリデータ
         if (parts.length != 6) {
             throw new IllegalArgumentException("Invalid input: " + line);
         }

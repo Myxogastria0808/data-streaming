@@ -12,7 +12,7 @@ public class WebSocketHandler extends WebSocketServer {
 
     private static WebSocketHandler instance;
 
-    // クライアントから"Hello"または設定メッセージを受け取ったかどうかのフラグ
+    // クライアントからメッセージを受け取ったかどうかのフラグ
     public static final AtomicBoolean triggered = new AtomicBoolean(false);
 
     // クライアントからの設定メッセージ（例: "time,5.0,2.0" または "count,50,10"）を保持
@@ -22,7 +22,7 @@ public class WebSocketHandler extends WebSocketServer {
         super(new InetSocketAddress(port));
     }
 
-    /** WebSocketサーバを指定ポートで起動 */
+    // WebSocketサーバを指定ポートで起動
     public static void start(int port) {
         if (instance == null) {
             instance = new WebSocketHandler(port);
@@ -31,7 +31,7 @@ public class WebSocketHandler extends WebSocketServer {
         }
     }
 
-    /** 接続中の全クライアントにメッセージ送信 */
+    // 接続中の全クライアントにメッセージ送信
     public static void send(String message) {
         if (instance != null) {
             for (WebSocket conn : instance.getConnections()) {
@@ -49,11 +49,11 @@ public class WebSocketHandler extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Received from client: " + message);
         // "time"または"count"で始まる設定メッセージを受信したら
-        if (message.toLowerCase().startsWith("time") || message.toLowerCase().startsWith("count")) {
+        if (message.startsWith("time") || message.startsWith("count")) {
             configMessage.set(message);
             triggered.set(true);
             synchronized (triggered) {
-                triggered.notifyAll();
+                triggered.notifyAll(); // メッセージ受信を通知
             }
         }
     }

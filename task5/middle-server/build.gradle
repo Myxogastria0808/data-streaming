@@ -3,26 +3,10 @@ plugins {
     id 'application'
 }
 
-group = 'com.example'
-version = '1.0'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    // flink dependencies
-    implementation 'org.apache.flink:flink-streaming-java:1.20.1'
-    implementation 'org.apache.flink:flink-clients:1.20.1'
-    implementation 'org.slf4j:slf4j-simple:2.0.17'
-    // webcocket dependency
-    implementation 'org.java-websocket:Java-WebSocket:1.6.0'
-    // calculate dependency
-    implementation 'org.apache.commons:commons-math3:3.6.1'
-    // json dependency
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.19.0'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.0'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 application {
@@ -34,8 +18,21 @@ application {
     ]
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // flink dependencies
+    implementation 'org.apache.flink:flink-streaming-java:1.20.1'
+    implementation 'org.apache.flink:flink-clients:1.20.1'
+    implementation 'org.slf4j:slf4j-simple:2.0.17'
+    // websocket dependency
+    implementation 'org.java-websocket:Java-WebSocket:1.6.0'
+    // json dependency
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.0'
 }
